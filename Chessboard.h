@@ -8,6 +8,7 @@ class Board
 public:
 	void update(std::string move);
 	static Board* setUp();
+	void display();
 protected:
 	Board() {}
 };

@@ -1,3 +1,4 @@
 ﻿  Chessboard.cpp
-MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\kingb\source\repos\chess_game\Debug\chess_game.exe : fatal error LNK1120: 1 unresolved externals
+C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(21,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(22,21): warning C4018: '<': signed/unsigned mismatch
+  chess_game.vcxproj -> C:\Users\kingb\source\repos\chess_game\Debug\chess_game.exe
