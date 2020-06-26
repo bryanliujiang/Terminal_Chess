@@ -7,7 +7,8 @@ static const int NUM_FILES = 8; // no greater than 26
 
 // List piece order of BLACK PIECES ONLY from POV of White, starting with back-most row upward.
 // Pieces will wrap automatically, starting from the first file again after reaching the last file.
-static const std::string PIECES = "RNBQKBNRPPPPPPPP";
+// MUST BE ALL UPPER CASE!
+static const std::string PIECES = "RNBQKBNRYYYYYYYY";
 
 
 

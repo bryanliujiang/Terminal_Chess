@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include<algorithm>
 
 #include "Properties.h"
 #include "Chessboard.h"
@@ -18,6 +19,12 @@ public:
 
 BoardImpl::BoardImpl()
 {
+	cout << "Welcome to Chess!\n\n"
+		<< "White = Uppercase\n"
+		<< "Black = Lowercase\n\n"
+		<< "Moves must be made like this: e2e4, e7e5, g1f3, etc.\n\n"
+		<< endl;
+	
 	vector<string> rows;
 	string row;
 	int counter = 0;
@@ -33,7 +40,9 @@ BoardImpl::BoardImpl()
 		}
 	}
 
-    string squares = PIECES;
+	string pieces = PIECES;
+	transform(pieces.begin(), pieces.end(), pieces.begin(), ::tolower);
+    string squares = pieces;
 	for (int i = 0; i < NUM_EMPTY_SPACES; ++i)
 		squares += '.';
 	for (auto p = rows.rbegin(); p != rows.rend(); ++p)
@@ -56,24 +65,45 @@ inline BoardImpl* GetImpl(Board* ptr) { return (BoardImpl*)ptr; }
 inline const BoardImpl* GetImpl(const Board* ptr) { return (const BoardImpl*)ptr; }
 //https://www.codeproject.com/Articles/42466/Hiding-Implementation-Details-in-C
 
-void Board::update(string move)
+void Board::update(int fromFile, int fromRank, int toFile, int toRank)
 {
-	return;
+	BoardImpl* priv = GetImpl(this);
+	char from = priv->rank[fromRank][fromFile];
+	priv->rank[fromRank][fromFile] = '.';
+	priv->rank[toRank][toFile] = from;
 }
 
 void Board::display()
 {
-	BoardImpl* f = GetImpl(this);
+	BoardImpl* priv = GetImpl(this);
 	int i = NUM_RANKS;
-	for (auto p : f->rank)
+	for (auto p : priv->rank)
 	{
-		cout << i;
+		cout << i << "     ";
 		for (auto q : p)
-			cout << "   " << q;
+			cout << q << "   ";
 		cout << '\n' << '\n';
 		--i;
 	}
-	cout << ' ';
+	cout << '\n' << "   ";
 	for (i = 0; i < NUM_FILES; ++i)
 		cout << "   " << alphabet[i];
+	cout << endl;
+}
+
+void Board::flip()
+{
+	BoardImpl* priv = GetImpl(this);
+	string squares;
+	for (auto p : priv->rank)
+		for (auto q : p)
+			squares += q;
+	reverse(squares.begin(), squares.end());
+	int counter = 0;
+	for (int i = 0; i < priv->rank.size(); ++i)
+		for (int j = 0; j < priv->rank[i].size(); ++j)
+		{
+			priv->rank[i][j] = squares[counter];
+			++counter;
+		}
 }

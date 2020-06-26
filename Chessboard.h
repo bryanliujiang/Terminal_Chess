@@ -6,9 +6,10 @@
 class Board
 {
 public:
-	void update(std::string move);
+	void update(int fromFile, int fromRank, int toFile, int toRank);
 	static Board* setUp();
 	void display();
+	void flip();
 protected:
 	Board() {}
 };
