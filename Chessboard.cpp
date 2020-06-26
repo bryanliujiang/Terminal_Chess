@@ -1,11 +1,11 @@
 #include <iostream>
 #include <vector>
 
+#include "Properties.h"
 #include "Chessboard.h"
 using namespace std;
 
-static const int NUM_RANKS = 8;
-static const int NUM_FILES = 8;
+static const string alphabet = "abcdefghijklmnopqrstuvwxyz"; // label the files
 
 class BoardImpl : public Board
 {
@@ -18,9 +18,33 @@ public:
 
 BoardImpl::BoardImpl()
 {
+	vector<string> rows;
+	string row;
+	int counter = 0;
+	for (int i = 0; i < PIECES.size(); ++i)
+	{
+		row += PIECES[i];
+		++counter;
+		if (counter == NUM_FILES)
+		{
+			rows.push_back(row);
+			row.clear();
+			counter = 0;
+		}
+	}
+
+    string squares = PIECES;
+	for (int i = 0; i < NUM_EMPTY_SPACES; ++i)
+		squares += '.';
+	for (auto p = rows.rbegin(); p != rows.rend(); ++p)
+		squares += *p;
+
 	for (int i = 0; i < rank.size(); ++i)
 		for (int j = 0; j < rank[i].size(); ++j)
-			rank[i][j] = '.';
+		{
+			rank[i][j] = squares[counter];
+			++counter;
+		}
 }
 
 Board* Board::setUp()
@@ -43,11 +67,13 @@ void Board::display()
 	int i = NUM_RANKS;
 	for (auto p : f->rank)
 	{
-		cout << i << "   ";
+		cout << i;
 		for (auto q : p)
-			cout << q << "   ";
+			cout << "   " << q;
 		cout << '\n' << '\n';
 		--i;
 	}
-	cout << "    a   b   c   d   e   f   g   h";
+	cout << ' ';
+	for (i = 0; i < NUM_FILES; ++i)
+		cout << "   " << alphabet[i];
 }
