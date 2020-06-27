@@ -1,5 +1,5 @@
-#ifndef PROPERTIES_H
-#define PROPERTIES_H
+#ifndef PROPERTIES_H_
+#define PROPERTIES_H_
 
 // Specify the board dimensions.
 const int NUM_RANKS = 8; // cannot be greater than 9 (for now)
@@ -16,11 +16,11 @@ const std::string PIECES = "RNBQKBNRYYYYYYYY";
 
 // Greet the players.
 const std::string GREETING =
-"Welcome to Terminal Chess!\n\n" +
-PLAYER_WHITE + " will be uppercase.\n" +
-PLAYER_BLACK + " will be lowercase.\n\n"
-"Moves must be made like this: e2e4, e7e5, g1f3, etc.\n\n"
-"Enter /C to view list of valid commands.\n\n";
+	"Welcome to Terminal Chess!\n\n" +
+	PLAYER_WHITE + " will be uppercase.\n" +
+	PLAYER_BLACK + " will be lowercase.\n\n"
+	"Moves must be made like this: e2e4, e7e5, g1f3, etc.\n\n"
+	"Enter /C to view list of valid commands.\n\n";
 
 
 
@@ -29,13 +29,13 @@ static std::string CURRENT_PLAYER; // keep track of current player; White moves 
 const std::string ALPHABET = "abcdefghijklmnopqrstuvwxyz"; // label the files
 const int NUM_EMPTY_SPACES = NUM_RANKS * NUM_FILES - PIECES.size() * 2; // number of empty squares at start of game
 const std::string EXIT_CODES = // what the program should return
-"Exit codes:\n"
-" 0 : Program exited successfully.\n"
-"-1 : Program exited with an error.\n";
+	"Exit codes:\n"
+	" 0 : Program exited successfully.\n"
+	"-1 : Program exited with an error.\n";
 const std::string COMMAND_CODES = // commands player can make during their turn
-"Enter any of the following to execute its respective command. Case sensitive.\n"
-"/f : Flip the board.\n"
-"/r : Resign.\n"
-"/E : View program exit codes\n";
+	"Enter any of the following to execute its respective command. Case sensitive.\n"
+	"/f : Flip the board.\n"
+	"/r : Resign.\n"
+	"/E : View program exit codes\n";
 
-#endif // PROPERTIES_H
+#endif // PROPERTIES_H_

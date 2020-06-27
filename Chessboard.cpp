@@ -1,14 +1,24 @@
-#include <algorithm>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #include "Chessboard.h"
+#include "Properties.h"
 using namespace std;
 
-Board::Board()
+class BoardImpl : public Board
+{
+public:
+	BoardImpl();
+	vector<vector<char>> rank = vector<vector<char>>(NUM_RANKS, vector<char>(NUM_FILES));
+	int numTurns;
+};
+
+BoardImpl::BoardImpl()
 	: numTurns(0)
 {
 	cout << GREETING << endl;
-	
+
 	vector<string> rows;
 	string row;
 	int counter = 0;
@@ -27,7 +37,7 @@ Board::Board()
 
 	string pieces = PIECES;
 	transform(pieces.begin(), pieces.end(), pieces.begin(), ::tolower);
-    string squares = pieces;
+	string squares = pieces;
 	for (int i = 0; i < NUM_EMPTY_SPACES; ++i)
 		squares += '.';
 	for (auto p = rows.rbegin(); p != rows.rend(); ++p)
@@ -41,19 +51,30 @@ Board::Board()
 		}
 }
 
+Board* Board::setUp()
+{
+	return new BoardImpl();
+}
+
+inline BoardImpl* GetImpl(Board* ptr) { return (BoardImpl*)ptr; }
+inline const BoardImpl* GetImpl(const Board* ptr) { return (const BoardImpl*)ptr; }
+//https://www.codeproject.com/Articles/42466/Hiding-Implementation-Details-in-C
+
 void Board::update(int fromFile, int fromRank, int toFile, int toRank)
 {
-	char from = rank[fromRank][fromFile];
-	rank[fromRank][fromFile] = '.';
-	rank[toRank][toFile] = from;
+	BoardImpl* priv = GetImpl(this);
+	char from = priv->rank[fromRank][fromFile];
+	priv->rank[fromRank][fromFile] = '.';
+	priv->rank[toRank][toFile] = from;
 }
 
 void Board::display()
 {
-	if (numTurns % 2 == 0) // even number of turns means it is White to move
+	BoardImpl* priv = GetImpl(this);
+	if (priv->numTurns % 2 == 0) // even number of turns means it is White to move
 	{
 		int i = NUM_RANKS;
-		for (auto p : rank)
+		for (auto p : priv->rank)
 		{
 			cout << i << "     ";
 			for (auto q : p)
@@ -69,7 +90,7 @@ void Board::display()
 	else
 	{
 		int i = 1; // 
-		for (auto p : rank)
+		for (auto p : priv->rank)
 		{
 			cout << i << "     ";
 			for (auto q : p)
@@ -86,18 +107,19 @@ void Board::display()
 
 void Board::flip(bool isTurn)
 {
+	BoardImpl* priv = GetImpl(this);
 	string squares;
-	for (auto p : rank)
+	for (auto p : priv->rank)
 		for (auto q : p)
 			squares += q;
 	reverse(squares.begin(), squares.end());
 	int counter = 0;
-	for (size_t i = 0; i < rank.size(); ++i)
-		for (size_t j = 0; j < rank[i].size(); ++j)
+	for (size_t i = 0; i < priv->rank.size(); ++i)
+		for (size_t j = 0; j < priv->rank[i].size(); ++j)
 		{
-			rank[i][j] = squares[counter];
+			priv->rank[i][j] = squares[counter];
 			++counter;
 		}
 	if (isTurn)
-		++numTurns;
+		++priv->numTurns;
 }

@@ -1,20 +1,15 @@
-#ifndef CHESSBOARD_H
-#define CHESSBOARD_H
-
-#include <vector>
-
-#include "Properties.h"
+#ifndef CHESSBOARD_H_
+#define CHESSBOARD_H_
 
 class Board
 {
 public:
-	Board();
 	void update(int fromFile, int fromRank, int toFile, int toRank);
 	void display();
 	void flip(bool isTurn = true);
-private:
-	int numTurns;
-	std::vector<std::vector<char>> rank = std::vector<std::vector<char>>(NUM_RANKS, std::vector<char>(NUM_FILES));
+	static Board* setUp();
+protected:
+	Board() {}
 };
 
-#endif // CHESSBOARD_H
+#endif // CHESSBOARD_H_

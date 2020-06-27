@@ -2,6 +2,7 @@
 
 #include "Chessboard.h"
 #include "Match.h"
+#include "Properties.h"
 using namespace std;
 
 class MatchImpl : public Match
@@ -158,10 +159,10 @@ int Match::start()
 {
 	MatchImpl* priv = GetImpl(this);
 
-	if(!priv->isValidRules())
+	if (!priv->isValidRules())
 		return -1;
-	
-	Board game;
+
+	Board* game = Board::setUp();
 
 	while (true)
 	{
@@ -172,14 +173,13 @@ int Match::start()
 		else
 			CURRENT_PLAYER = PLAYER_BLACK;
 
-		game.display();
-		
+		game->display();
+
 		do
 		{
 			cout << '\n' << CURRENT_PLAYER << " to move: ";
 			cin >> move;
-		}
-		while (priv->isCommand(move, &game) || !priv->isValidMoveSyntax(move) || !priv->isValidTurn(move));
+		} while (priv->isCommand(move, game) || !priv->isValidMoveSyntax(move) || !priv->isValidTurn(move));
 
 		cout << '\n' << CURRENT_PLAYER << " moved from " << move[0] << move[1] << " to " << move[2] << move[3] << ".\n" << endl;
 
@@ -200,8 +200,8 @@ int Match::start()
 			priv->isWhite = true;
 		}
 
-		game.update(ff, fr, tf, tr);
-		game.flip();
+		game->update(ff, fr, tf, tr);
+		game->flip();
 	}
 
 	return 0;

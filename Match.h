@@ -1,5 +1,5 @@
-#ifndef MATCH_H
-#define MATCH_H
+#ifndef MATCH_H_
+#define MATCH_H_
 
 class Match
 {
@@ -10,4 +10,4 @@ protected:
 	Match() {}
 };
 
-#endif // MATCH_H
+#endif // MATCH_H_
