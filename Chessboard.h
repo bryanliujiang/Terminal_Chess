@@ -5,9 +5,9 @@ class Board
 {
 public:
 	void update(int fromFile, int fromRank, int toFile, int toRank);
-	static Board* setUp();
 	void display();
 	void flip();
+	static Board* setUp();
 protected:
 	Board() {}
 };
