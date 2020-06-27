@@ -1,12 +1,10 @@
 #include <iostream>
 #include <vector>
-#include<algorithm>
+#include <algorithm>
 
 #include "Properties.h"
 #include "Chessboard.h"
 using namespace std;
-
-static const string alphabet = "abcdefghijklmnopqrstuvwxyz"; // label the files
 
 class BoardImpl : public Board
 {
@@ -15,9 +13,11 @@ public:
 
 	// private:
 	vector<vector<char>> rank = vector<vector<char>>(NUM_RANKS, vector<char>(NUM_FILES));
+	int numTurns;
 };
 
 BoardImpl::BoardImpl()
+	: numTurns(0)
 {
 	cout << "Welcome to Chess!\n\n"
 		<< "White = Uppercase\n"
@@ -76,19 +76,39 @@ void Board::update(int fromFile, int fromRank, int toFile, int toRank)
 void Board::display()
 {
 	BoardImpl* priv = GetImpl(this);
-	int i = NUM_RANKS;
-	for (auto p : priv->rank)
+
+	if (priv->numTurns % 2 == 0) // even number of turns means it is White to move
 	{
-		cout << i << "     ";
-		for (auto q : p)
-			cout << q << "   ";
-		cout << '\n' << '\n';
-		--i;
+		int i = NUM_RANKS;
+		for (auto p : priv->rank)
+		{
+			cout << i << "     ";
+			for (auto q : p)
+				cout << q << "   ";
+			cout << '\n' << '\n';
+			--i;
+		}
+		cout << '\n' << "   ";
+		for (i = 0; i < NUM_FILES; ++i)
+			cout << "   " << ALPHABET[i];
+		cout << endl;
 	}
-	cout << '\n' << "   ";
-	for (i = 0; i < NUM_FILES; ++i)
-		cout << "   " << alphabet[i];
-	cout << endl;
+	else
+	{
+		int i = 1; // 
+		for (auto p : priv->rank)
+		{
+			cout << i << "     ";
+			for (auto q : p)
+				cout << q << "   ";
+			cout << '\n' << '\n';
+			++i; //
+		}
+		cout << '\n' << "   ";
+		for (i = NUM_FILES - 1; i >= 0; --i) //
+			cout << "   " << ALPHABET[i];
+		cout << endl;
+	}
 }
 
 void Board::flip()
@@ -106,4 +126,5 @@ void Board::flip()
 			priv->rank[i][j] = squares[counter];
 			++counter;
 		}
+	++priv->numTurns;
 }

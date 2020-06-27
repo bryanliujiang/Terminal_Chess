@@ -1,9 +1,2 @@
-﻿  Chessboard.cpp
-C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(51,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(52,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(103,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\kingb\source\repos\chess_game\chess_game\Chessboard.cpp(104,21): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-  Generating Code...
+﻿  Match.cpp
   chess_game.vcxproj -> C:\Users\kingb\source\repos\chess_game\Debug\chess_game.exe

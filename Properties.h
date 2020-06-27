@@ -1,6 +1,8 @@
 #ifndef PROPERTIES_H
 #define PROPERTIES_H
 
+#include <string>
+
 // Adjust below!
 static const int NUM_RANKS = 8;
 static const int NUM_FILES = 8; // no greater than 26
@@ -13,6 +15,7 @@ static const std::string PIECES = "RNBQKBNRYYYYYYYY";
 
 
 //////////// DO NOT MODIFY BELOW ////////////
+static const std::string ALPHABET = "abcdefghijklmnopqrstuvwxyz"; // label the files
 static const int NUM_EMPTY_SPACES = NUM_RANKS * NUM_FILES - PIECES.size() * 2;
 
 #endif // PROPERTIES_H

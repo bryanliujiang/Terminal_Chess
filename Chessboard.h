@@ -1,8 +1,6 @@
 #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
 
-#include<string>
-
 class Board
 {
 public:
