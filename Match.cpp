@@ -17,12 +17,20 @@ public:
 };
 
 MatchImpl::MatchImpl()
-	: isWhite(true)
 {
+	if (current_player == PLAYER_WHITE)
+		isWhite = true;
+	else // (current_player == PLAYER_BLACK)
+		isWhite = false;
 }
 
 bool MatchImpl::isValidRules()
 {
+	if (current_player != PLAYER_WHITE && current_player != PLAYER_BLACK)
+	{
+		cout << "Error: First player not properly defined." << endl;
+		return false;
+	}
 	if (PIECES.size() == 0)
 	{
 		cout << "Error: No pieces." << endl;
@@ -130,7 +138,7 @@ bool MatchImpl::isCommand(std::string move, Board* board)
 		board->display();
 		break;
 	case 'r':
-		cout << CURRENT_PLAYER + " resigns." << endl;
+		cout << current_player + " resigns." << endl;
 		exit(0);
 	case 'C':
 		cout << COMMAND_CODES;
@@ -168,20 +176,20 @@ int Match::start()
 	{
 		string move;
 		int ff, fr, tf, tr; // from file, from rank, to file, to rank
-		if (priv->isWhite == true)
-			CURRENT_PLAYER = PLAYER_WHITE;
+		if (priv->isWhite)
+			current_player = PLAYER_WHITE;
 		else
-			CURRENT_PLAYER = PLAYER_BLACK;
+			current_player = PLAYER_BLACK;
 
 		game->display();
 
 		do
 		{
-			cout << '\n' << CURRENT_PLAYER << " to move: ";
+			cout << '\n' << current_player << " to move: ";
 			cin >> move;
 		} while (priv->isCommand(move, game) || !priv->isValidMoveSyntax(move) || !priv->isValidTurn(move));
 
-		cout << '\n' << CURRENT_PLAYER << " moved from " << move[0] << move[1] << " to " << move[2] << move[3] << ".\n" << endl;
+		cout << '\n' << current_player << " moved from " << move[0] << move[1] << " to " << move[2] << move[3] << ".\n" << endl;
 
 		if (priv->isWhite)
 		{
