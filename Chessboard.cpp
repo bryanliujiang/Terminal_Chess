@@ -24,7 +24,7 @@ BoardImpl::BoardImpl()
 	vector<string> rows;
 	string row;
 	int counter = 0;
-	for (int i = 0; i < PIECES.size(); ++i)
+	for (size_t i = 0; i < PIECES.size(); ++i)
 	{
 		row += PIECES[i];
 		++counter;
@@ -44,8 +44,8 @@ BoardImpl::BoardImpl()
 	for (auto p = rows.rbegin(); p != rows.rend(); ++p)
 		squares += *p;
 
-	for (int i = 0; i < rank.size(); ++i)
-		for (int j = 0; j < rank[i].size(); ++j)
+	for (size_t i = 0; i < rank.size(); ++i)
+		for (size_t j = 0; j < rank[i].size(); ++j)
 		{
 			rank[i][j] = squares[counter];
 			++counter;
@@ -111,8 +111,8 @@ void Board::flip(bool isTurn)
 			squares += q;
 	reverse(squares.begin(), squares.end());
 	int counter = 0;
-	for (int i = 0; i < priv->rank.size(); ++i)
-		for (int j = 0; j < priv->rank[i].size(); ++j)
+	for (size_t i = 0; i < priv->rank.size(); ++i)
+		for (size_t j = 0; j < priv->rank[i].size(); ++j)
 		{
 			priv->rank[i][j] = squares[counter];
 			++counter;
