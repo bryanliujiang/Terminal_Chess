@@ -6,7 +6,7 @@ class Board
 public:
 	void update(int fromFile, int fromRank, int toFile, int toRank);
 	void display();
-	void flip();
+	void flip(bool isTurn = true);
 	static Board* setUp();
 protected:
 	Board() {}

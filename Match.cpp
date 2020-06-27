@@ -19,11 +19,6 @@ MatchImpl::MatchImpl()
 {
 }
 
-Match* Match::create()
-{
-	return new MatchImpl();
-}
-
 inline MatchImpl* GetImpl(Match* ptr) { return (MatchImpl*)ptr; }
 inline const MatchImpl* GetImpl(const Match* ptr) { return (const MatchImpl*)ptr; }
 //https://www.codeproject.com/Articles/42466/Hiding-Implementation-Details-in-C
@@ -43,27 +38,26 @@ int Match::start()
 	
 	MatchImpl* priv = GetImpl(this);
 	Board* game = Board::setUp();
-	string player;
 
 	while (true)
 	{
 		string move;
 		int ff, fr, tf, tr; // from file, from rank, to file, to rank
 		if (priv->isWhite == true)
-			player = "White";
+			CURRENT_PLAYER = PLAYER_WHITE;
 		else
-			player = "Black";
+			CURRENT_PLAYER = PLAYER_BLACK;
 
 		game->display();
 		
 		do
 		{
-			cout << '\n' << player << " to move: ";
+			cout << '\n' << CURRENT_PLAYER << " to move: ";
 			cin >> move;
 		}
-		while (!isValidMoveSyntax(move) || !isValidTurn(move));
+		while (isCommand(move, game) || !isValidMoveSyntax(move) || !isValidTurn(move));
 
-		cout << '\n' << player << " moved from " << move[0] << move[1] << " to " << move[2] << move[3] << ".\n" << endl;
+		cout << '\n' << CURRENT_PLAYER << " moved from " << move[0] << move[1] << " to " << move[2] << move[3] << ".\n" << endl;
 
 		if (priv->isWhite)
 		{
@@ -145,4 +139,45 @@ bool Match::isValidTurn(string move)
 	}
 
 	return true;
+}
+
+bool Match::isCommand(std::string move, Board* board)
+{
+	if (move.size() != 2 || move[0] != '/')
+		return false; // all commands are '/' followed by a single character
+
+	char command = move[1];
+	cout << '\n';
+	
+	switch (command)
+	{
+	case 'f': // Flips board
+		board->flip(false); // do not count flip toward number of turns
+		board->display();
+		cout << "\nPress ENTER to revert board orientiation." << endl;
+		cin.ignore();
+		cin.get();
+		board->flip(false); // do not count flip toward number of turns
+		board->display();
+		break;
+	case 'r':
+		cout << CURRENT_PLAYER + " resigns." << endl;
+		exit(0);
+	case 'C':
+		cout << COMMAND_CODES;
+		break;
+	case 'E':
+		cout << EXIT_CODES;
+		break;
+	default:
+		cout << "Not a valid command. Try again. Commands are case sensitive.\n"
+			"Enter /C to view list of commands." << endl;
+	}
+	
+	return true;
+}
+
+Match* Match::create()
+{
+	return new MatchImpl();
 }

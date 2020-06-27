@@ -2,8 +2,8 @@
 #include <vector>
 #include <algorithm>
 
-#include "Properties.h"
 #include "Chessboard.h"
+#include "Properties.h"
 using namespace std;
 
 class BoardImpl : public Board
@@ -19,11 +19,7 @@ public:
 BoardImpl::BoardImpl()
 	: numTurns(0)
 {
-	cout << "Welcome to Chess!\n\n"
-		<< "White = Uppercase\n"
-		<< "Black = Lowercase\n\n"
-		<< "Moves must be made like this: e2e4, e7e5, g1f3, etc.\n\n"
-		<< endl;
+	cout << GREETING << endl;
 	
 	vector<string> rows;
 	string row;
@@ -54,11 +50,6 @@ BoardImpl::BoardImpl()
 			rank[i][j] = squares[counter];
 			++counter;
 		}
-}
-
-Board* Board::setUp()
-{
-	return new BoardImpl();
 }
 
 inline BoardImpl* GetImpl(Board* ptr) { return (BoardImpl*)ptr; }
@@ -111,7 +102,7 @@ void Board::display()
 	}
 }
 
-void Board::flip()
+void Board::flip(bool isTurn)
 {
 	BoardImpl* priv = GetImpl(this);
 	string squares;
@@ -126,5 +117,11 @@ void Board::flip()
 			priv->rank[i][j] = squares[counter];
 			++counter;
 		}
-	++priv->numTurns;
+	if (isTurn)
+		++priv->numTurns;
+}
+
+Board* Board::setUp()
+{
+	return new BoardImpl();
 }
