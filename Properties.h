@@ -3,9 +3,11 @@
 
 #include <string>
 
+// Specify the board dimensions.
 static const int NUM_RANKS = 8;
-static const int NUM_FILES = 8; // no greater than 26
+static const int NUM_FILES = 8; // cannot be greater than 26
 
+// Name the players.
 static const std::string PLAYER_WHITE = "White";
 static const std::string PLAYER_BLACK = "Black";
 
@@ -14,7 +16,7 @@ static const std::string PLAYER_BLACK = "Black";
 // MUST BE ALL UPPER CASE!
 static const std::string PIECES = "RNBQKBNRYYYYYYYY";
 
-// Greet the players!
+// Greet the players.
 static const std::string GREETING =
 "Welcome to Chess!\n\n" +
 PLAYER_WHITE + " will be uppercase.\n" +
