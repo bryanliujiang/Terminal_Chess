@@ -1,7 +1,5 @@
 #include "Chessboard.h"
 #include "Match.h"
-#include "Properties.h"
-class Match;
 
 int main()
 {
