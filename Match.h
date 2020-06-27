@@ -7,6 +7,7 @@ class Match
 {
 public:
 	int start();
+	bool isValidRules();
 	bool isValidMoveSyntax(std::string move);
 	bool isValidTurn(std::string move);
 	bool isCommand(std::string move, Board* board);

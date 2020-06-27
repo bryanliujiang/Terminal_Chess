@@ -28,7 +28,8 @@ BoardImpl::BoardImpl()
 	{
 		row += PIECES[i];
 		++counter;
-		if (counter == NUM_FILES)
+		if (counter == NUM_FILES ||
+			i == PIECES.size() - 1) // push rest of row during final iteration
 		{
 			rows.push_back(row);
 			row.clear();

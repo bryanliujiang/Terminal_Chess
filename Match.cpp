@@ -25,16 +25,8 @@ inline const MatchImpl* GetImpl(const Match* ptr) { return (const MatchImpl*)ptr
 
 int Match::start()
 {
-	if (NUM_FILES > 26)
-	{
-		cout << "Error: Too many files!" << endl;
+	if(!isValidRules())
 		return -1;
-	}
-	if (NUM_EMPTY_SPACES < 0)
-	{
-		cout << "Error: Too many pieces!" << endl;
-		return -1;
-	}
 	
 	MatchImpl* priv = GetImpl(this);
 	Board* game = Board::setUp();
@@ -81,6 +73,37 @@ int Match::start()
 	}
 
 	return 0;
+}
+
+bool Match::isValidRules()
+{
+	if (PIECES.size() == 0)
+	{
+		cout << "Error: No pieces." << endl;
+		return false;
+	}
+	if (NUM_RANKS > 9)
+	{
+		cout << "Error: Too many ranks." << endl;
+		return false;
+	}
+	if (NUM_FILES > 26)
+	{
+		cout << "Error: Too many files." << endl;
+		return false;
+	}
+	if (NUM_EMPTY_SPACES < 0)
+	{
+		cout << "Error: Not enough squares." << endl;
+		return false;
+	}
+	if (NUM_RANKS < 0 || NUM_FILES < 0)
+	{
+		cout << "Error: Cannot have negative number of ranks and/or files." << endl;
+		return false;
+	}
+
+	return true;
 }
 
 bool Match::isValidMoveSyntax(string move)

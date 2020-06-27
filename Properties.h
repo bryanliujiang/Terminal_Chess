@@ -4,8 +4,8 @@
 #include <string>
 
 // Specify the board dimensions.
-static const int NUM_RANKS = 8;
-static const int NUM_FILES = 8; // cannot be greater than 26
+static const int NUM_RANKS = 8; // cannot be greater than 9 (for now)
+static const int NUM_FILES = 8; // cannot be greater than 26 (for now)
 
 // Name the players.
 static const std::string PLAYER_WHITE = "White";
@@ -23,6 +23,7 @@ PLAYER_WHITE + " will be uppercase.\n" +
 PLAYER_BLACK + " will be lowercase.\n\n"
 "Moves must be made like this: e2e4, e7e5, g1f3, etc.\n\n"
 "Enter /C to view list of valid commands.\n\n";
+
 
 
 //////////////////////////////// DO NOT MODIFY BELOW ////////////////////////////////
