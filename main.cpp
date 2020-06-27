@@ -1,4 +1,3 @@
-#include "Chessboard.h"
 #include "Match.h"
 
 int main()
