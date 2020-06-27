@@ -49,9 +49,6 @@ BoardImpl::BoardImpl()
 			rank[i][j] = squares[counter];
 			++counter;
 		}
-
-	if (current_player == PLAYER_BLACK)
-		flip(false);
 }
 
 Board* Board::setUp()
@@ -74,7 +71,7 @@ void Board::update(int fromFile, int fromRank, int toFile, int toRank)
 void Board::display()
 {
 	BoardImpl* priv = GetImpl(this);
-	if (current_player == PLAYER_WHITE) // even number of turns means it is White to move
+	if (priv->numTurns % 2 == 0) // even number of turns means it is White to move
 	{
 		int i = NUM_RANKS;
 		for (auto p : priv->rank)
@@ -90,7 +87,7 @@ void Board::display()
 			cout << "   " << ALPHABET[i];
 		cout << endl;
 	}
-	else // (current_player == PLAYER_BLACK)
+	else
 	{
 		int i = 1; // 
 		for (auto p : priv->rank)

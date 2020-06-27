@@ -17,20 +17,12 @@ public:
 };
 
 MatchImpl::MatchImpl()
+	:isWhite(true)
 {
-	if (current_player == PLAYER_WHITE)
-		isWhite = true;
-	else // (current_player == PLAYER_BLACK)
-		isWhite = false;
 }
 
 bool MatchImpl::isValidRules()
 {
-	if (current_player != PLAYER_WHITE && current_player != PLAYER_BLACK)
-	{
-		cout << "Error: First player not properly defined." << endl;
-		return false;
-	}
 	if (PIECES.size() == 0)
 	{
 		cout << "Error: No pieces." << endl;

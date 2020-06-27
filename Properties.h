@@ -8,7 +8,6 @@ const int NUM_FILES				 = 8; // cannot be greater than 26 (for now)
 // Name the players. Choose who plays first.
 const std::string PLAYER_WHITE	 = "White";
 const std::string PLAYER_BLACK	 = "Black";
-const std::string first_to_move	 = "White";
 
 // List piece order of BLACK PIECES ONLY from POV of White, starting with back-most row upward.
 // Pieces will wrap automatically, starting from the first file again after reaching the last file.
@@ -26,7 +25,7 @@ const std::string GREETING		 =
 
 
 //////////////////////////////// DO NOT MODIFY BELOW ////////////////////////////////
-static std::string current_player	= first_to_move; // keep track of current player
+static std::string current_player; // keeps track of current player
 const std::string ALPHABET			= "abcdefghijklmnopqrstuvwxyz"; // label the files
 const int NUM_EMPTY_SPACES			= NUM_RANKS * NUM_FILES - PIECES.size() * 2; // number of empty squares at start of game
 const std::string EXIT_CODES		= // what the program should return
