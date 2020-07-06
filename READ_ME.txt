@@ -2,6 +2,8 @@ Still to do:
 -implement draw
 -make Match::start() more slimmed
 -check if valid rule
+-implement classes for each piece
+-chess clock
 
 Features to implement:
 

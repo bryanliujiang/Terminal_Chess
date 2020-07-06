@@ -13,6 +13,7 @@ public:
 	bool isValidMoveSyntax(std::string move);
 	bool isValidTurn(std::string move);
 	bool isCommand(std::string move, Board* board);
+	bool isGameOver();
 	bool isWhite;
 };
 
@@ -96,18 +97,14 @@ bool MatchImpl::isValidMoveSyntax(string move)
 bool MatchImpl::isValidTurn(string move)
 {
 	int ff, fr, tf, tr; // from file, from rank, to file, to rank
+
+	// adjust for zero-based indexing for the board
 	ff = move[0] - 97;
 	fr = move[1] - '0';
 	tf = move[2] - 97;
 	tr = move[3] - '0';
 
-	if (ff == tf && fr == tr)
-	{
-		cout << "Piece did not move anywhere. Try again." << endl;
-		return false; // cannot move piece to own square
-	}
-
-	return true;
+	return isValidTurnBasedOnRuleset(ff, fr, tf, tr);
 }
 
 bool MatchImpl::isCommand(std::string move, Board* board)
@@ -120,6 +117,18 @@ bool MatchImpl::isCommand(std::string move, Board* board)
 
 	switch (command)
 	{
+	case 'd':
+		cout << current_player << " offers a draw. Type 'Y' then ENTER to accept. "
+			"Otherwise, press any key then ENTER to decline." << endl;
+		cin >> command; // dummy char
+		if (command == 'Y')
+		{
+			cout << PLAYER_WHITE << " and " << PLAYER_BLACK << " draw." << endl;
+			exit(0);
+		}
+		cin.ignore();
+		cin.get();
+		break;
 	case 'f': // Flips board
 		board->flip(false); // do not count flip toward number of turns
 		board->display();
@@ -146,6 +155,12 @@ bool MatchImpl::isCommand(std::string move, Board* board)
 	return true;
 }
 
+bool MatchImpl::isGameOver()
+{
+	// TO DO
+	return false;
+}
+
 Match* Match::create()
 {
 	return new MatchImpl();
@@ -155,7 +170,7 @@ inline MatchImpl* GetImpl(Match* ptr) { return (MatchImpl*)ptr; }
 inline const MatchImpl* GetImpl(const Match* ptr) { return (const MatchImpl*)ptr; }
 //https://www.codeproject.com/Articles/42466/Hiding-Implementation-Details-in-C
 
-int Match::start()
+int Match::result()
 {
 	MatchImpl* priv = GetImpl(this);
 
@@ -174,6 +189,9 @@ int Match::start()
 			current_player = PLAYER_BLACK;
 
 		game->display();
+
+		if (priv->isGameOver())
+			break;
 
 		do
 		{

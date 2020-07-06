@@ -147,6 +147,7 @@
     <ClCompile Include="Chessboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Match.cpp" />
+    <ClCompile Include="Ruleset_Classic.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

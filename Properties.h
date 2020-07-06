@@ -22,6 +22,9 @@ const std::string GREETING		 =
 	"Moves must be made like this: e2e4, e7e5, g1f3, etc.\n\n"
 	"Enter /C to view list of valid commands.\n\n";
 
+// Remember to implement a ruleset for the pieces! Otherwise, the classic ruleset
+// can be applied. The implementation is in "Ruleset_Classic.cpp".
+
 
 
 //////////////////////////////// DO NOT MODIFY BELOW ////////////////////////////////
@@ -34,8 +37,10 @@ const std::string EXIT_CODES		= // what the program should return
 	"-1 : Program exited with an error.\n";
 const std::string COMMAND_CODES		= // commands player can make during their turn
 	"Enter any of the following to execute its respective command. Case sensitive.\n"
+	"/d : Request a draw.\n"
 	"/f : Flip the board.\n"
 	"/r : Resign.\n"
 	"/E : View program exit codes\n";
+bool isValidTurnBasedOnRuleset(int fromFile, int fromRank, int toFile, int toRank); // Specify the ruleset you want the pieces to adhere to.
 
 #endif // PROPERTIES_H_
