@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "Chessboard.h"
 #include "Match.h"
 #include "Properties.h"
 using namespace std;
@@ -10,9 +9,9 @@ class MatchImpl : public Match
 public:
 	MatchImpl();
 	bool isValidRules();
-	bool isValidMoveSyntax(std::string move);
-	bool isValidTurn(std::string move);
-	bool isCommand(std::string move, Board* board);
+	bool isValidMoveSyntax(string move);
+	bool isValidTurn(string move, Board* board);
+	bool isCommand(string move, Board* board);
 	bool isGameOver();
 	bool isWhite;
 };
@@ -94,7 +93,7 @@ bool MatchImpl::isValidMoveSyntax(string move)
 	return true;
 }
 
-bool MatchImpl::isValidTurn(string move)
+bool MatchImpl::isValidTurn(string move, Board* board)
 {
 	int ff, fr, tf, tr; // from file, from rank, to file, to rank
 
@@ -104,7 +103,7 @@ bool MatchImpl::isValidTurn(string move)
 	tf = move[2] - 97;
 	tr = move[3] - '0';
 
-	return isValidTurnBasedOnRuleset(ff, fr, tf, tr);
+	return isValidTurnBasedOnRuleset(ff, fr, tf, tr, board);
 }
 
 bool MatchImpl::isCommand(std::string move, Board* board)
@@ -167,7 +166,7 @@ Match* Match::create()
 }
 
 inline MatchImpl* GetImpl(Match* ptr) { return (MatchImpl*)ptr; }
-inline const MatchImpl* GetImpl(const Match* ptr) { return (const MatchImpl*)ptr; }
+//inline const MatchImpl* GetImpl(const Match* ptr) { return (const MatchImpl*)ptr; }
 //https://www.codeproject.com/Articles/42466/Hiding-Implementation-Details-in-C
 
 int Match::result()
@@ -197,7 +196,7 @@ int Match::result()
 		{
 			cout << '\n' << current_player << " to move: ";
 			cin >> move;
-		} while (priv->isCommand(move, game) || !priv->isValidMoveSyntax(move) || !priv->isValidTurn(move));
+		} while (priv->isCommand(move, game) || !priv->isValidMoveSyntax(move) || !priv->isValidTurn(move, game));
 
 		cout << '\n' << current_player << " moved from " << move[0] << move[1] << " to " << move[2] << move[3] << ".\n" << endl;
 

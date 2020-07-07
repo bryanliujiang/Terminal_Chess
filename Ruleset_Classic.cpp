@@ -3,7 +3,7 @@
 #include "Properties.h"
 using namespace std;
 
-bool isValidTurnBasedOnRuleset(int fromFile, int fromRank, int toFile, int toRank)
+bool isValidTurnBasedOnRuleset(int fromFile, int fromRank, int toFile, int toRank, Board* board)
 {
 	if (fromFile == fromRank && fromRank == toRank)
 	{

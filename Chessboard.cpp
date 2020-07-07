@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-#include "Chessboard.h"
 #include "Properties.h"
 using namespace std;
 
@@ -122,4 +121,10 @@ void Board::flip(bool isTurn)
 		}
 	if (isTurn)
 		++priv->numTurns;
+}
+
+char Board::square(char file, char rank) const
+{
+	const BoardImpl* priv = GetImpl(this);
+	return priv->rank[NUM_RANKS - (rank - '0')][file - 97];
 }

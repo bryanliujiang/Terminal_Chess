@@ -1,6 +1,8 @@
 #ifndef PROPERTIES_H_
 #define PROPERTIES_H_
 
+#include "Chessboard.h"
+
 // Specify the board dimensions.
 const int NUM_RANKS				 = 8; // cannot be greater than 9 (for now)
 const int NUM_FILES				 = 8; // cannot be greater than 26 (for now)
@@ -41,6 +43,6 @@ const std::string COMMAND_CODES		= // commands player can make during their turn
 	"/f : Flip the board.\n"
 	"/r : Resign.\n"
 	"/E : View program exit codes\n";
-bool isValidTurnBasedOnRuleset(int fromFile, int fromRank, int toFile, int toRank); // Specify the ruleset you want the pieces to adhere to.
+bool isValidTurnBasedOnRuleset(int fromFile, int fromRank, int toFile, int toRank, Board* board); // Specify the ruleset you want the pieces to adhere to.
 
 #endif // PROPERTIES_H_
