@@ -4,7 +4,6 @@
 #include "Properties.h"
 using namespace std;
 
-
 class MatchImpl : public Match
 {
 public:

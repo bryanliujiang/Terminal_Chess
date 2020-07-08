@@ -27,7 +27,10 @@
     <ClInclude Include="Ruleset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pieceset.h">
+    <ClInclude Include="Pieceset_Classic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pieceset_TemplateName.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

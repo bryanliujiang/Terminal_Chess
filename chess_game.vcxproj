@@ -141,7 +141,8 @@
   <ItemGroup>
     <ClInclude Include="Chessboard.h" />
     <ClInclude Include="Match.h" />
-    <ClInclude Include="Pieceset.h" />
+    <ClInclude Include="Pieceset_Classic.h" />
+    <ClInclude Include="Pieceset_TemplateName.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="Ruleset.h" />
   </ItemGroup>
