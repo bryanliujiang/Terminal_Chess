@@ -1,8 +1,11 @@
 #ifndef PROPERTIES_H_
 #define PROPERTIES_H_
 
+#include "Chessboard.h"
 #include "Ruleset.h"
-#include "Pieceset.h"
+
+// Specify piece-set template to use.
+#include "Pieceset_Classic.h"
 
 // Specify the board dimensions.
 const int NUM_RANKS				 = 8; // cannot be greater than 9 (for now)
