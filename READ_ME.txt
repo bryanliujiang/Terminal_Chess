@@ -1,5 +1,4 @@
 Still to do:
--RE-ORIENT VECTORS FROM WHITE PERSPECTIVE
 -implement draw
 -make Match::start() more slimmed
 -check if valid rule

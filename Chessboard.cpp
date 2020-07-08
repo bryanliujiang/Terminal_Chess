@@ -123,8 +123,8 @@ void Board::flip(bool isTurn)
 		++priv->numTurns;
 }
 
-char Board::square(char file, char rank) const
+char onSquare(char file, char rank, Board* board)
 {
-	const BoardImpl* priv = GetImpl(this);
+	BoardImpl* priv = GetImpl(board);
 	return priv->rank[NUM_RANKS - (rank - '0')][file - 97];
 }

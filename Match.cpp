@@ -95,15 +95,15 @@ bool MatchImpl::isValidMoveSyntax(string move)
 
 bool MatchImpl::isValidTurn(string move, Board* board)
 {
-	int ff, fr, tf, tr; // from file, from rank, to file, to rank
+	//int ff, fr, tf, tr; // from file, from rank, to file, to rank
 
-	// adjust for zero-based indexing for the board
-	ff = move[0] - 97;
-	fr = move[1] - '0';
-	tf = move[2] - 97;
-	tr = move[3] - '0';
+	//// adjust for zero-based indexing for the board
+	//ff = move[0] - 97;
+	//fr = move[1] - '0';
+	//tf = move[2] - 97;
+	//tr = move[3] - '0';
 
-	return isValidTurnBasedOnRuleset(ff, fr, tf, tr, board);
+	return isValidTurnBasedOnRuleset(move, board);
 }
 
 bool MatchImpl::isCommand(std::string move, Board* board)

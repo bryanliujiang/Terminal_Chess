@@ -141,7 +141,9 @@
   <ItemGroup>
     <ClInclude Include="Chessboard.h" />
     <ClInclude Include="Match.h" />
+    <ClInclude Include="Pieceset.h" />
     <ClInclude Include="Properties.h" />
+    <ClInclude Include="Ruleset.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Chessboard.cpp" />

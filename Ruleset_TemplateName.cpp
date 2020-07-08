@@ -3,7 +3,7 @@
 #include "Properties.h"
 using namespace std;
 
-bool isValidTurnBasedOnRuleset(int fromFile, int fromRank, int toFile, int toRank)
+bool isValidTurnBasedOnRuleset(string move, Board* board)
 {
 	//////////////////////////////////////////////
 	// ENTER CUSTOM RULESET IMPLEMENTATION HERE //
