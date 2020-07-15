@@ -213,6 +213,12 @@ void Board::flip(bool isTurn)
 		++priv->numTurns;
 }
 
+int Board::numTurns() const
+{
+	const BoardImpl* priv = GetImpl(this);
+	return priv->numTurns;
+}
+
 char onSquare(char file, char rank, Board* board)
 {
 	BoardImpl* priv = GetImpl(board);

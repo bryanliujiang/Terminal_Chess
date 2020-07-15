@@ -46,6 +46,7 @@ const std::string COMMAND_CODES	= // commands player can make during their turn
 	"/d : Request a draw.\n"
 	"/f : Flip the board.\n"
 	"/r : Resign.\n"
+	"/t : View number of turns played so far.\n"
 	"/E : View program exit codes\n";
 
 const char NAME_KING	= 'K';

@@ -116,7 +116,7 @@ bool MatchImpl::isCommand(std::string move, Board* board)
 
 	switch (command)
 	{
-	case 'd':
+	case 'd': // NEEDS FIXING
 		cout << current_player << " offers a draw. Type 'Y' then ENTER to accept. "
 			"Otherwise, press any key then ENTER to decline." << endl;
 		cin >> command; // dummy char
@@ -140,6 +140,9 @@ bool MatchImpl::isCommand(std::string move, Board* board)
 	case 'r':
 		cout << current_player + " resigns." << endl;
 		exit(0);
+	case 't':
+		cout << "The number of turns played so far is " << board->numTurns() << "." << endl;
+		break;
 	case 'C':
 		cout << COMMAND_CODES;
 		break;
