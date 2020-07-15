@@ -3,10 +3,10 @@ live_code: code currently in use to run the program
 
 Still to do:
 
--implement draw
--make Match::start() more slimmed
+-make Match::result() more slimmed
 -check if valid rule
 -implement classes for each piece
+-fix bugs in draw offer
 -chess clock
 
 Features to implement:
