@@ -6,29 +6,30 @@ class Board;
 class Piece
 {
 public:
-	Piece(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	Piece(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 	virtual ~Piece();
-	virtual void checksKing() = 0;
-	int onFile() const;
+	//virtual void checksKing() = 0;
 	int onRank() const;
+	int onFile() const;
 	int getID() const;
 private:
 	Board* m_currentBoard;
 	char m_displayName;
-	int m_currentFile;
 	int m_currentRank;
+	int m_currentFile;
 	int m_ID;
 };
+
+inline int Piece::onRank() const
+{
+	return m_currentRank;
+}
 
 inline int Piece::onFile() const
 {
 	return m_currentFile;
 }
 
-inline int Piece::onRank() const
-{
-	return m_currentRank;
-}
 inline int Piece::getID() const
 {
 	return m_ID;
@@ -37,7 +38,7 @@ inline int Piece::getID() const
 class King : public Piece
 {
 public:
-	King(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	King(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 	bool isInCheck();
 	bool hasMoved();
 private:
@@ -58,35 +59,34 @@ inline bool King::hasMoved()
 class Queen : public Piece
 {
 public:
-	Queen(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	Queen(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 private:
 };
 
 class Rook : public Piece
 {
 public:
-	Rook(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	Rook(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 private:
 };
 
 class Bishop : public Piece
 {
 public:
-	Bishop(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
-private:
+	Bishop(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 };
 
 class Knight : public Piece
 {
 public:
-	Knight(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	Knight(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 private:
 };
 
 class Pawn : public Piece
 {
 public:
-	Pawn(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	Pawn(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 private:
 };
 

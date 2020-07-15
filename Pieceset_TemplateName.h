@@ -6,29 +6,30 @@ class Board;
 class Piece
 {
 public:
-	Piece(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	Piece(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 	virtual ~Piece();
-	virtual void checksKing() = 0;
-	int onFile() const;
+	//virtual void checksKing() = 0;
 	int onRank() const;
+	int onFile() const;
 	int getID() const;
 private:
 	Board* m_currentBoard;
 	char m_displayName;
-	int m_currentFile;
 	int m_currentRank;
+	int m_currentFile;
 	int m_ID;
 };
+
+inline int Piece::onRank() const
+{
+	return m_currentRank;
+}
 
 inline int Piece::onFile() const
 {
 	return m_currentFile;
 }
 
-inline int Piece::onRank() const
-{
-	return m_currentRank;
-}
 inline int Piece::getID() const
 {
 	return m_ID;
@@ -37,7 +38,7 @@ inline int Piece::getID() const
 class King : public Piece
 {
 public:
-	King(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank);
+	King(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile);
 	bool isInCheck();
 	bool hasMoved();
 private:

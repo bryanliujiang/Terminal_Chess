@@ -52,7 +52,7 @@ const char NAME_KING	= 'K';
 const char NAME_QUEEN	= 'Q';
 const char NAME_ROOK	= 'R';
 const char NAME_BISHOP	= 'B';
-const char NAME_KNIGHT	= 'K';
+const char NAME_KNIGHT	= 'N';
 const char NAME_PAWN	= 'Y';
 
 // ID_NAME: piece name , piece number , White/Black
@@ -67,7 +67,6 @@ const int ID_BISHOP = 400;
 const int ID_KNIGHT = 500;
 const int ID_PAWN	= 600;
 
-// Up to 9 different colors for now.
 const int COLOR_WHITE = 1;
 const int COLOR_BLACK = 2;
 

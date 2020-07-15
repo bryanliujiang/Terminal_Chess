@@ -9,6 +9,7 @@ Features to implement:
 
 -Let Black move first
 -Customize own piece with own rules
+-Add more than 2 colors
 -Make board of any size
 -make AI
 -alternate input notation

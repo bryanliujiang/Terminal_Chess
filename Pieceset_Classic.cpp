@@ -3,8 +3,8 @@
 #include "Properties.h"
 using namespace std;
 
-Piece::Piece(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: m_currentBoard(b), m_displayName(name), m_currentFile(currentFile), m_currentRank(currentRank)
+Piece::Piece(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: m_currentBoard(b), m_displayName(name), m_currentRank(currentRank), m_currentFile(currentFile)
 {
 	if (instance > 9)
 	{
@@ -27,32 +27,32 @@ Piece::~Piece()
 {
 }
 
-King::King(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: Piece(b, name, piece, color, instance, currentFile, currentRank), m_inCheck(false), m_hasMoved(false)
+King::King(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: Piece(b, name, piece, color, instance, currentRank, currentFile), m_inCheck(false), m_hasMoved(false)
 {
 }
 
-Queen::Queen(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: Piece(b, name, piece, color, instance, currentFile, currentRank)
+Queen::Queen(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: Piece(b, name, piece, color, instance, currentRank, currentFile)
 {
 }
 
-Rook::Rook(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: Piece(b, name, piece, color, instance, currentFile, currentRank)
+Rook::Rook(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: Piece(b, name, piece, color, instance, currentRank, currentFile)
 {
 }
 
-Bishop::Bishop(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: Piece(b, name, piece, color, instance, currentFile, currentRank)
+Bishop::Bishop(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: Piece(b, name, piece, color, instance, currentRank, currentFile)
 {
 }
 
-Knight::Knight(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: Piece(b, name, piece, color, instance, currentFile, currentRank)
+Knight::Knight(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: Piece(b, name, piece, color, instance, currentRank, currentFile)
 {
 }
 
-Pawn::Pawn(Board* b, char name, int piece, int color, int instance, int currentFile, int currentRank)
-	: Piece(b, name, piece, color, instance, currentFile, currentRank)
+Pawn::Pawn(Board* b, char name, int piece, int color, int instance, int currentRank, int currentFile)
+	: Piece(b, name, piece, color, instance, currentRank, currentFile)
 {
 }
