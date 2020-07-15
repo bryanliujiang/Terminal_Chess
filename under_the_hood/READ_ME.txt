@@ -1,4 +1,8 @@
+closet_code: code templates and checkpoints set aside for reference
+live_code: code currently in use to run the program
+
 Still to do:
+
 -implement draw
 -make Match::start() more slimmed
 -check if valid rule
