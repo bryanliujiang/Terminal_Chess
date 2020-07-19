@@ -11,8 +11,8 @@ bool isValidTurnBasedOnRuleset(string move, Board* board)
 	char tf = move[2]; // to file
 	char tr = move[3]; // to rank
 
-	int vfd = abs(tf - ff); // valid file distance
-	int vrd = abs(tr - fr); // valid rank distance
+	int fd = abs(tf - ff); // file distance
+	int rd = abs(tr - fr); // rank distance
 	
 	if (ff == tf && fr == tr)
 	{

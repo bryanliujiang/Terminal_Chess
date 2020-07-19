@@ -5,7 +5,7 @@ class Match
 {
 public:
 	int result();
-	static Match* create();
+	static Match* begin();
 protected:
 	Match() {}
 };

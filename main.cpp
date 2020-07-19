@@ -2,6 +2,6 @@
 
 int main()
 {
-	Match* round = Match::create();
+	Match* round = Match::begin();
 	return round->result();
 }

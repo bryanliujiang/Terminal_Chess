@@ -163,7 +163,7 @@ bool MatchImpl::isGameOver()
 	return false;
 }
 
-Match* Match::create()
+Match* Match::begin()
 {
 	return new MatchImpl();
 }
