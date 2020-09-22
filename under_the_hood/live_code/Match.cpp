@@ -103,7 +103,18 @@ bool MatchImpl::isValidTurn(string move, Board* board)
 	//tf = move[2] - 97;
 	//tr = move[3] - '0';
 
-	return isValidTurnBasedOnRuleset(move, board);
+	return isValidTurnBasedOnRuleset(move, board); // 200922 edit
+
+	//////////////////////////////////////////////////////////////////////////////
+
+	//char ff = move[0]; // from file
+	//char fr = move[1]; // from rank
+	//char tf = move[2]; // to file
+	//char tr = move[3]; // to rank
+
+	//switch
+
+	//return true;
 }
 
 bool MatchImpl::isCommand(std::string move, Board* board)

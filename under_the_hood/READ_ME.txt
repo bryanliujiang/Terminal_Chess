@@ -4,10 +4,11 @@ live_code: code currently in use to run the program
 Still to do:
 
 -make Match::result() more slimmed
--check if valid rule
+-check if valid turn
 -implement classes for each piece
 -fix bugs in draw offer
 -chess clock
+-make error code reference list
 
 Features to implement:
 
