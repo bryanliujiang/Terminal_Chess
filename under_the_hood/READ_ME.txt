@@ -4,7 +4,7 @@ live_code: code currently in use to run the program
 Still to do:
 
 -make Match::result() more slimmed
--check if valid turn
+-check if valid rule
 -implement classes for each piece
 -fix bugs in draw offer
 -chess clock
@@ -18,3 +18,4 @@ Features to implement:
 -Make board of any size
 -make AI
 -alternate input notation
+-have asymmetric piece types and/or amounts
